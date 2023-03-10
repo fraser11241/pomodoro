@@ -1,21 +1,12 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
-import TimerClock from "./components/TimerClock/TimerClock";
+import Timer from "./components/Timer/Timer";
 
 const App = () => {
 	return (
 		<Box width="1" height="1">
-			<Grid
-				container
-				spacing={0}
-				direction="column"
-				alignItems="center"
-				justifyContent="center"
-				style={{ minHeight: "100vh" }}
-			>
-				<TimerClock />
-			</Grid>
+			<Timer timerDurationMinutes={5} />
 		</Box>
 	);
 };
