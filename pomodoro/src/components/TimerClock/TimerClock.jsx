@@ -1,10 +1,18 @@
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
 import React from "react";
+import { IconButton, Paper, Typography } from "@mui/material";
+import { Box } from "@mui/system";
+import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import PauseCircleOutlineIcon from "@mui/icons-material/PauseCircleOutline";
+import TimerIcon from "@mui/icons-material/Timer";
 
-const TimerClock = ({ time }) => {
-	const { seconds, minutes } = time;
-
+const TimerClock = ({
+	seconds,
+	minutes,
+	isRunning,
+	pause,
+	resume,
+	editTimings,
+}) => {
 	const getFormattedTime = (seconds, minutes) => {
 		let secondsString = seconds.toString();
 		let minutesString = minutes.toString();
@@ -20,11 +28,32 @@ const TimerClock = ({ time }) => {
 	};
 
 	return (
-		<Box>
-			<Typography component="p" variant="h1">
-				{getFormattedTime(seconds, minutes)}
-			</Typography>
-		</Box>
+		<Paper className="timer-clock-wrapper">
+			<Box paddingX={5} paddingY={1}>
+				<Typography component="p" variant="h1">
+					{getFormattedTime(seconds, minutes)}
+				</Typography>
+				<Box display="flex" justifyContent="center">
+					{isRunning ? (
+						<IconButton onClick={pause}>
+							<PauseCircleOutlineIcon
+								sx={{ height: 38, width: 38 }}
+							/>
+						</IconButton>
+					) : (
+						<IconButton onClick={resume}>
+							<PlayCircleOutlineIcon
+								sx={{ height: 38, width: 38 }}
+							/>
+						</IconButton>
+					)}
+
+					<IconButton onClick={editTimings}>
+						<TimerIcon sx={{ height: 38, width: 38 }} />
+					</IconButton>
+				</Box>
+			</Box>
+		</Paper>
 	);
 };
 
