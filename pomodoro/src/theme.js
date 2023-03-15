@@ -1,25 +1,40 @@
 import { createTheme } from "@mui/material/styles";
+import { pink, deepPurple, indigo, teal } from "@mui/material/colors";
 
-// A custom theme for this app
-const theme = createTheme({
+const studyBackgroundColour = pink[500];
+const studyCardColour = pink[600];
+
+const breakBackgroundColour = indigo[500];
+const breakCardColour = indigo[600];
+
+const defaultTheme = createTheme({
 	palette: {
 		mode: "dark",
-		primary: {
-			main: "#7d53a2",
-		},
-		secondary: {
-			main: "#a8cf7c",
-		},
 		gradient: {
-			pageBackground: "linear-gradient(to right, #7d53a2 50%, #a8cf7c 0)",
-			clockBackground:
-				"linear-gradient(to bottom, #7d53a2 50%, #a8cf7c 0)",
-		},
-		background: {
-			break: "#ffbb1d",
-			study: "#1D61FF",
+			pageBackground: `linear-gradient(to right, ${breakBackgroundColour} 50%, ${studyBackgroundColour} 0)`,
+			clockBackground: `linear-gradient(to top, ${studyCardColour} 50%, ${breakCardColour} 0)`,
 		},
 	},
 });
 
-export default theme;
+const studyTheme = createTheme(defaultTheme, {
+	palette: {
+		primary: pink,
+		secondary: {
+			main: deepPurple[500],
+			contrastText: "#FFF",
+		},
+	},
+});
+
+const breakTheme = createTheme(defaultTheme, {
+	palette: {
+		mode: "dark",
+		primary: indigo,
+		secondary: {
+			main: teal[500],
+		},
+	},
+});
+
+export { studyTheme, breakTheme };

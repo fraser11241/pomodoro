@@ -64,6 +64,11 @@ const EditTimingModal = ({
 			open={isOpen}
 			onClose={handleClose}
 			component="form"
+			PaperProps={{
+				sx: (theme) => ({
+					background: theme.palette.secondary.main,
+				}),
+			}}
 			sx={{
 				"& input[type=number]": {
 					MozAppearance: "textfield",
@@ -79,7 +84,13 @@ const EditTimingModal = ({
 			}}
 			onSubmit={handleSubmit}
 		>
-			<DialogTitle>Customise Times</DialogTitle>
+			<DialogTitle
+				sx={(theme) => ({
+					color: theme.palette.secondary.contrastText,
+				})}
+			>
+				Customise Times
+			</DialogTitle>
 			<DialogContent>
 				<Box display="flex" justifyContent="space-around">
 					<Box>
@@ -118,11 +129,11 @@ const EditTimingModal = ({
 				</Box>
 			</DialogContent>
 			<DialogActions>
-				<Button type="button" onClick={handleClose} color="secondary">
+				<Button type="button" onClick={handleClose} color="inherit">
 					Cancel
 				</Button>
-				<Button type="submit" onClick={handleSubmit} color="secondary">
-					Subscribe
+				<Button type="submit" onClick={handleSubmit} color="inherit">
+					Save
 				</Button>
 			</DialogActions>
 		</Dialog>
