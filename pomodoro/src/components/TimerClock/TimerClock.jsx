@@ -35,32 +35,20 @@ const TimerClock = ({
 				</Typography>
 				<Box display="flex" justifyContent="center">
 					{isRunning ? (
-						<IconButton
-							onClick={pause}
-							ariaLabel="Pause timer"
-							title="Pause timer"
-						>
+						<IconButton onClick={pause} title="Pause timer">
 							<PauseCircleOutlineIcon
 								sx={{ height: 38, width: 38 }}
 							/>
 						</IconButton>
 					) : (
-						<IconButton
-							onClick={resume}
-							ariaLabel="Resume timer"
-							title="Resume timer"
-						>
+						<IconButton onClick={resume} title="Resume timer">
 							<PlayCircleOutlineIcon
 								sx={{ height: 38, width: 38 }}
 							/>
 						</IconButton>
 					)}
 
-					<IconButton
-						onClick={editTimings}
-						ariaLabel="Edit timings"
-						title="Edit timings"
-					>
+					<IconButton onClick={editTimings} title="Edit timings">
 						<TimerIcon sx={{ height: 38, width: 38 }} />
 					</IconButton>
 				</Box>
